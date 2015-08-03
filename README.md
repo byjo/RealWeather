@@ -13,4 +13,5 @@
 * (+) 기상청 정보가 얼마나 맞았나 통계 정보
 
 ##사용 기술
-* Javascript-svg, Node.js(Websocket Server), Spring+Hibernate, MYSQL
+* Javascript, Node.js(Websocket Server), Spring+Hibernate, MYSQL
+* HTML5 (svg, WebSocket, Geolocation...)
