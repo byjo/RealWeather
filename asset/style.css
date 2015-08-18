@@ -3,7 +3,8 @@ svg.graph {
 	height: 500px;
 }
 
-svg.graph .grid {
+.axis path, .axis line {
+  fill: none;
   stroke: #4D4845;
   stroke-dasharray: 1 2;
   stroke-width: 1;
