@@ -15,3 +15,37 @@
 ##사용 기술
 * Javascript, Node.js(Websocket Server), Spring+Hibernate, MYSQL
 * HTML5 (svg, WebSocket, Geolocation...)
+
+##Environment
+* Development : Mac os, mongoDB
+   - Front-End : HTML/CSS/Javascript
+   - Back-End : Node.js, Java
+
+* Operation : Ubuntu, Apache Tomcat, mongoDB
+
+##Data model
+```
+Weather{ 
+	id : 1L,
+	latitude : "37.4876400000", 
+	longtitude : "126.9879200000", 
+	city : "서울", 
+	country : "서초구", 
+	village : "방배4동", 
+	datetime : "2015-09-07 17:30:00", 
+	sky : "맑음", 
+	temperature : "선선"
+}
+
+Photo{
+	weatherId : 1L,
+	url : "/users/.../1509071730000001.jpg"
+}
+```
+
+
+##Schedule
+* DB week01(~September 8) : DB 구조 설계, 프로젝트 틀 잡기, mongoDB 공부
+* DB week02(~September 15) : Front-to-Server data 저장, Server-to-Front data 전송 구현
+* DB week03(~September 22) : 마무리
+
