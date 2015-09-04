@@ -13,19 +13,19 @@
 * (+) 기상청 정보가 얼마나 맞았나 통계 정보
 
 ##사용 기술
-* Javascript, Node.js(Websocket Server), Spring+Hibernate, MYSQL
+* Javascript, Node.js, MongoDB
 * HTML5 (svg, WebSocket, Geolocation...)
 
 ##Environment
 * Development : Mac os, mongoDB
    - Front-End : HTML/CSS/Javascript
-   - Back-End : Node.js, Java
+   - Back-End : Node.js
 
-* Operation : Ubuntu, Apache Tomcat, mongoDB
+* Operation : Ubuntu, Node.js, mongoDB
 
 ##Data model
 ```
-Weather{ 
+Weather { 
 	id : 1L,
 	latitude : "37.4876400000", 
 	longtitude : "126.9879200000", 
@@ -35,11 +35,16 @@ Weather{
 	datetime : "2015-09-07 17:30:00", 
 	sky : "맑음", 
 	temperature : "선선"
+	photo : {
+		url : "/users/.../150907173000001.jpg"
+	},
+	comment : "날씨 좋네요"
 }
 
-Photo{
-	weatherId : 1L,
-	url : "/users/.../1509071730000001.jpg"
+User {
+	id : 1L,
+	email : "buyongjo@gmail.com",
+	password : ""
 }
 ```
 
