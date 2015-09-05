@@ -1,39 +1,55 @@
-svg.graph {
-	width: 800px;
-	height: 500px;
+html, body{width: 100%; height: 100%;}
+body,p,textarea,ol,ul,li,h1,h2,h3,h4{margin: 0; padding: 0;}
+body,h1,h2,h3,h4,input,button,a{font-family:'Nanum Gothic',Arial,sans-serif;color:#555555;}
+a{text-decoration:none}
+ul, ol, li{list-style: none;}
+html, body{overflow: auto;}
+
+#wrapper {
+	height: 100%;
+	height: auto !important;
+	min-height: 100%;
 }
 
-.axis path, .axis line {
-  fill: none;
-  stroke: #4D4845;
-  stroke-dasharray: 1 2;
-  stroke-width: 1;
+#wrap-contents {
+	overflow: auto;
+	padding-bottom: 100px;
 }
 
-svg.graph .labels {
-  font-family: Arial;
-  font-size: 14px;
-  kerning: 1;
+header {
+	height: 60px;
+	background-color: #ddd;
+	line-height: 60px;
 }
 
-svg.graph .labels.x-labels {
-  text-anchor: middle;
+#title {
+	float: left;
+	margin-left: 20px;
 }
 
-svg.graph .labels.y-labels {
-  text-anchor: end;
+nav {
+	float: right;
+	margin-right: 20px;
 }
 
-svg.graph .points {
-  stroke: white;
-  stroke-width: 3;
+main {
+	height: 100%;
+	background-image: url("./image/bg_sky_a07.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
-svg.graph .first_set {
-  fill: #00554d;
+footer {
+	clear: both;
+	position: relative;
+	margin-top: -100px;
+	height: 100px;
 }
 
-svg.graph .lines {
-  fill: none;
-  stroke: #00554D;
+@media (min-width: 1100px) {
+	#wrap-header {
+		width: 1100px;
+		margin: 0 auto;
+	}
 }
