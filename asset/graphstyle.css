@@ -1,6 +1,8 @@
-svg.graph {
-	width: 800px;
-	height: 500px;
+svg.weather_graph {
+	width: 600px;
+	height: 400px;
+  float: right;
+  background-color: black;
 }
 
 .axis path, .axis line {
@@ -10,30 +12,30 @@ svg.graph {
   stroke-width: 1;
 }
 
-svg.graph .labels {
+svg.weather_graph .labels {
   font-family: Arial;
   font-size: 14px;
   kerning: 1;
 }
 
-svg.graph .labels.x-labels {
+svg.weather_graph .labels.x-labels {
   text-anchor: middle;
 }
 
-svg.graph .labels.y-labels {
+svg.weather_graph .labels.y-labels {
   text-anchor: end;
 }
 
-svg.graph .points {
+svg.weather_graph .points {
   stroke: white;
   stroke-width: 3;
 }
 
-svg.graph .first_set {
+svg.weather_graph .first_set {
   fill: #00554d;
 }
 
-svg.graph .lines {
+svg.weather_graph .lines {
   fill: none;
   stroke: #00554D;
 }

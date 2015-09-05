@@ -4,35 +4,50 @@
 		<meta charset="utf-8">
 		<title>RealWeather</title>
 		<link rel="stylesheet" href="./asset/style.css">
+		<link rel="stylesheet" href="./asset/graphstyle.css">
 	</head>
 	<body>
-		<div id="wrapper">
-			<div id="wrap-contents">
-				<header>
-					<div id="wrap-header">
-						<div id="title">
-							<span></span>
-							<span>RealWeather</span>
-						</div>
-						
-						<nav>
-							<input>
-							<button></button>
-						</nav>
-					</div>		
-				</header>
+		<header>
+			<div id="wrap_header">
+				<div class="title">
+					<span></span>
+					<span>RealWeather</span>
+				</div>
+				
+				<nav>
+					<input>
+					<button></button>
+				</nav>
+			</div>		
+		</header>
 
-				<main>
-					<section>
+		<main>
+			<div id="wrap_main">
+				<section class="weather_box">
+					<div class="location">
+						경기 성남시 분당구 삼평동
+					</div>
+					<div class="time">
+						2015.09.05 오후 04:33:10
+					</div>
+					<div class="weather_detail">
+						<div class="icon" data-icon="B"></div>
+						<div class="info sky">맑음</div>
+						<div class="info temperature">따뜻</div>
+						<div class="info time">5분전</div>
+					</div>
+
+					<svg class="weather_graph">
 						
-					</section>
-		<!-- 			<svg>
-						
-					</svg> -->
-				</main>
+					</svg>
+				</section>
+
+				<form class="form">
+					
+				</form>
 			</div>
-		</div>
-		
+		</main>
+
 		<footer>
 			<p>©2015 RealWeather</p>
 		</footer>
