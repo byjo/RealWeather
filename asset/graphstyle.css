@@ -2,7 +2,7 @@ svg.weather_graph {
 	width: 600px;
 	height: 400px;
   float: right;
-  background-color: black;
+  background-color: rgba(255,255,255,0.2);
 }
 
 .axis path, .axis line {
@@ -13,8 +13,6 @@ svg.weather_graph {
 }
 
 svg.weather_graph .labels {
-  font-family: Arial;
-  font-size: 14px;
   kerning: 1;
 }
 
@@ -26,9 +24,21 @@ svg.weather_graph .labels.y-labels {
   text-anchor: end;
 }
 
-svg.weather_graph .points {
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+/*svg.weather_graph .points {
   stroke: white;
   stroke-width: 3;
+}*/
+
+svg.weather_graph .icon {
+  font-family: 'MeteoconsRegular';
+  content: attr(data-icon);
+  font-size: 30px;
+  fill: #444;
 }
 
 svg.weather_graph .first_set {
@@ -37,5 +47,14 @@ svg.weather_graph .first_set {
 
 svg.weather_graph .lines {
   fill: none;
-  stroke: #00554D;
+  stroke: goldenrod;
+}
+
+svg.weather_graph .rect {
+  r: 20;
+  fill: #aaa;
+}
+
+.rect:first-child, .icon:first-child {
+  visibility: hidden;
 }
