@@ -78,6 +78,59 @@ form {
 	margin-top: 20px;
 }
 
+.form .sky input {
+	visibility: hidden;
+	position: absolute;
+}
+
+.form .sky .icon:before {
+	font-family: 'MeteoconsRegular';
+	content: attr(data-icon);
+	font-size: 30px;
+}
+
+.form .sky input + .icon:before {
+	background-color: #bbb;
+	border-radius: 40px;
+	padding: 10px;
+}
+
+
+.form .sky input:checked + .icon:before {
+	background-color: goldenrod;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 500px;
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    border: none;
+    /*왜 안먹지?*/
+    border-radius: 20px;
+    background: #fff;
+    
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+
+
+/*input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}*/
+
+
 footer {
 
 	height: 140px;

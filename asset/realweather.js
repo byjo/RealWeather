@@ -4,6 +4,15 @@
 			navigator.geolocation.getCurrentPosition(sucess, error);
 		else
 			console.log("geolocation 사용 불가");
+	
+		$(".form .sky input").on('change', function() {
+			$(".form .sky input").not(this).prop('checked', false);
+		})
+
+		$(".temp_slider").on('change', function() {
+			$(".temp_out").val(this.value);
+		})
+
 	});
 
 	function sucess(position) {
@@ -15,4 +24,6 @@
 	function error(msg) {
 		console.log(msg);
 	}
+
+
 }());

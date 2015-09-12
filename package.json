@@ -2,7 +2,7 @@
   "name": "realweather",
   "version": "1.0.0",
   "description": "> 왜 일기예보는 맞는 날보다 틀리는 날이 많아 보이는 걸까? > 지금 비가 오는지, 환절기에 사람들은 반팔을 입었는지 긴팔을 입었는지, 단순한 일기예보만으로는 알기가 어렵다.",
-  "main": "ws_server.js",
+  "main": "index.html",
   "dependencies": {
     "express": "^4.13.3",
     "websocket": "^1.0.21"
