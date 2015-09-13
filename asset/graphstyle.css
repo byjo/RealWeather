@@ -45,11 +45,11 @@ svg.weather_graph .lines {
   stroke: goldenrod;
 }
 
-svg.weather_graph .rect {
+svg.weather_graph .around {
   r: 20;
   fill: #aaa;
 }
 
-.rect:first-child, .icon:first-child {
+.around:first-child, svg.weather_graph .icon:first-child {
   visibility: hidden;
 }

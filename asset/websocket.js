@@ -3,11 +3,14 @@ var connection = new WebSocket(url);
 
 connection.onopen = function() {
 	console.log("open");
-	connection.send("thank you for accepting this Web Socket request");
+	//connection.send("thank you for accepting this Web Socket request");
 }
 
 connection.onmessage = function(e) {
-	console.log(e.data);
+	var jsonData = JSON.parse(e.data);
+	jsonData.temperature = parseInt(jsonData.temperature);
+	jsonData.id = parseInt(jsonData.id);
+	updateWeather(jsonData);
 }
 
 connection.onclose = function(e) {
@@ -30,12 +33,13 @@ function resetForm() {
 function sendData() {
 	var sky = $(".form .sky .selected").attr("data-icon");
 	var weather = {
+		id : 6,
 		datetime : new Date().toISOString(),
 		sky : sky,
 		temperature : $(".form .temp_slider").val(),
 		comment : $(".form .comments").val()
 	}
-	console.log(weather);
 	// websocket은 String, ArrayBuffer, Blob만 전송할 수 있다!
 	connection.send(JSON.stringify(weather));
 }
+

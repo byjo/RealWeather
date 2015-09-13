@@ -18,13 +18,17 @@ wsServer = new WebSocketServer({
 
 wsServer.on("request", function(request) {
 	var connection = request.accept(null, request.origin);
+	console.log((new Date()) + " Peer " + connection.remoteAddress + " connected.");
 
 	connection.on("message", function(message) {
+		// console.log(new Date()) + " Peer " + this.remoteAddress);
+		console.log(this.socket._peername);
 		console.log(message.utf8Data);
-		//connection.sendUTF(message);
+		connection.sendUTF(message.utf8Data);
 	});
 
 	connection.on("close", function(reasonCode, description) {
 		console.log((new Date()) + " Peer " + connection.remoteAddress + " disconnected.");
 	})
 });
+
