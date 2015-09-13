@@ -1,34 +1,41 @@
-var log = function(s) {
-	console.log(s);
-	if (document.readyState !== "complete") {
-		log.buffer.push(s);
-	} else {
-		document.getElementById("output").innerHTML += (s + "\n");
-	}
+var url = "ws://localhost:8080";
+var connection = new WebSocket(url);
+
+connection.onopen = function() {
+	console.log("open");
+	connection.send("thank you for accepting this Web Socket request");
 }
 
-log.buffer = [];
-url = "ws://localhost:8080";
-w = new WebSocket(url);
-
-w.onopen = function() {
-	log("open");
-	w.send("thank you for accepting this Web Socket request");
-}
-
-w.onmessage = function(e) {
+connection.onmessage = function(e) {
 	console.log(e.data);
-	log(e.data);
 }
 
-w.onclose = function(e) {
-	log("closed");
+connection.onclose = function(e) {
+	console.log("closed");
 }
 
-window.onload = function() {
-	log(log.buffer.join("\n"));
-	document.getElementById("sendButton").onclick = function() {
-		console.log(document.getElementById("inputMessage").value);
-		w.send(document.getElementById("inputMessage").value);
+$(document).on("DOMContentLoaded", function() {
+	$(".submit").on("click", function() {
+		sendData();
+		resetForm();
+		// 오늘의 삽질 : input type="submit"이나 button element는 click시 page reload가 발생한다
+		return false;
+	})
+})
+
+function resetForm() {
+	$(".form .selected").removeClass("selected").prev().prop("checked", false);
+}
+
+function sendData() {
+	var sky = $(".form .sky .selected").attr("data-icon");
+	var weather = {
+		datetime : new Date().toISOString(),
+		sky : sky,
+		temperature : $(".form .temp_slider").val(),
+		comment : $(".form .comments").val()
 	}
+	console.log(weather);
+	// websocket은 String, ArrayBuffer, Blob만 전송할 수 있다!
+	connection.send(JSON.stringify(weather));
 }

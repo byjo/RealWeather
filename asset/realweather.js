@@ -4,9 +4,10 @@
 			navigator.geolocation.getCurrentPosition(sucess, error);
 		else
 			console.log("geolocation 사용 불가");
-	
-		$(".form .sky input").on('change', function() {
-			$(".form .sky input").not(this).prop('checked', false);
+
+		$(".form .sky input").on("change", function() {
+			$(".form .sky input").not(this).prop("checked", false);
+			$(this).next().addClass("selected");
 		})
 
 		$(".temp_slider").on('change', function() {
