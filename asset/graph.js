@@ -1,9 +1,9 @@
 var data = [
-	{id: 1, datetime: "2015-09-13T03:32:02.075Z", temperature: 29, sky: "B"}, 
-	{id: 2, datetime: "2015-09-13T04:32:02.075Z", temperature: 31, sky: "C"}, 
-	{id: 3, datetime: "2015-09-13T05:32:02.075Z", temperature: 30, sky: "D"}, 
-	{id: 4, datetime: "2015-09-13T06:32:02.075Z", temperature: 28, sky: "E"}, 
-	{id: 5, datetime: "2015-09-13T07:32:02.075Z", temperature: 26, sky: "F"}
+	{datetime: "2015-09-13T03:32:02.075Z", temperature: 29, sky: "B"}, 
+	{datetime: "2015-09-13T04:32:02.075Z", temperature: 31, sky: "C"}, 
+	{datetime: "2015-09-13T05:32:02.075Z", temperature: 30, sky: "D"}, 
+	{datetime: "2015-09-13T06:32:02.075Z", temperature: 28, sky: "E"}, 
+	{datetime: "2015-09-13T07:32:02.075Z", temperature: 26, sky: "F"}
 ];
 
 var width = 600;
@@ -54,12 +54,8 @@ svg.append("svg:g")
 
 // graph line 그릴 때 x, y좌표 찾는 function
 var lineFunc = d3.svg.line()
-	.x(function(d) {
-		return x(new Date(d.datetime));
-	})
-	.y(function(d) {
-		return y(d.temperature);
-	})
+	.x(function(d) { return x(dateFn(d)); })
+	.y(function(d) { return y(tempFn(d)); })
 	.interpolate("interpolate");
 
 
@@ -75,20 +71,20 @@ dotGroup.append("svg:g")
 	.selectAll("circle")
 	.data(data)
 	.enter().append("circle")
-	.attr("cx", function(d) {return x(new Date(d.datetime));})
-	.attr("cy", function(d) {return y(d.temperature);})
+	.attr("cx", function(d) { return x(dateFn(d)); })
+	.attr("cy", function(d) { return y(tempFn(d)); })
 	.attr("class", "around")
-	.text(function(d) {return d.sky;});
+	.text(function(d) { return d.sky; });
 
 dotGroup.append("svg:g")
 	.attr("class", "points")
 	.selectAll(".icon")
 	.data(data)
 	.enter().append("text")
-	.attr("x", function(d) {return x(new Date(d.datetime))-15;})
-	.attr("y", function(d) {return y(d.temperature)+15;})
+	.attr("x", function(d) { return x(dateFn(d))-15; })
+	.attr("y", function(d) { return y(tempFn(d))+15; })
 	.attr("class", "icon")
-	.text(function(d) {return d.sky;});
+	.text(function(d) { return d.sky; });
 
 function updateWeather(newWeather) {
 	data.push(newWeather);
@@ -97,41 +93,48 @@ function updateWeather(newWeather) {
 
 function refreshGraph() {
 	x.domain(d3.extent(data, dateFn));
-	y.domain(d3.extent(data, tempFn));
 
-	var xAxis = d3.svg.axis()
-		.scale(x)
-		.orient("bottom")
-		//.ticks(data.length)
-		//.tickForamt(d3.time.format("%m/%d %H:%M"))
-		.tickSubdivide(true);
+	// var xAxis = d3.svg.axis()
+	// 	.scale(x)
+	// 	.orient("bottom")
+	// 	//.ticks(data.length)
+	// 	//.tickForamt(d3.time.format("%m/%d %H:%M"))
+	// 	.tickSubdivide(true);
 
-	svg.append("svg:g")
-		.attr("class", "axis")
-		.attr("transform", "translate(0," + (height - margin.bottom) + ")")
-		.call(xAxis);
+	// svg.append("svg:g")
+	// 	.attr("class", "axis")
+	// 	.attr("transform", "translate(0," + (height - margin.bottom) + ")")
+	// 	.call(xAxis);
+
+	// svg.append("svg:path")
+	// 	.attr("d", lineFunc(data))
+	// 	.attr("class", "lines");
+
+	var circles = svg.selectAll("circle").data(data);
+	var texts = svg.selectAll(".icon").data(data);
+
+	circles.transition()
+		.attr("cx", function(d) { return x(dateFn(d)); })
+		.attr("cy", function(d) { return y(tempFn(d)); });
+
+	texts.transition()
+		.attr("x", function(d) { return x(dateFn(d))-15; })
+		.attr("y", function(d) { return y(tempFn(d))+15; });
+
+	circles.enter()
+		.append("circle")
+		.attr("cx", function(d) { return x(dateFn(d)); })
+		.attr("cy", function(d) { return y(tempFn(d)); })
+		.attr("class", "around")
+		.text(function(d) {return d.sky;});
+
+	texts.enter().append("text")
+		.attr("x", function(d) { return x(dateFn(d))-15; })
+		.attr("y", function(d) { return y(tempFn(d))+15; })
+		.attr("class", "icon")
+		.text(function(d) { return d.sky; });
 
 	svg.append("svg:path")
 		.attr("d", lineFunc(data))
 		.attr("class", "lines");
-
-	dotGroup.append("svg:g")
-		.attr("class", "icon_circle")
-		.selectAll("circle")
-		.data(data)
-		.enter().append("circle")
-		.attr("cx", function(d) {return x(new Date(d.datetime));})
-		.attr("cy", function(d) {return y(d.temperature);})
-		.attr("class", "around")
-		.text(function(d) {return d.sky;});
-
-	dotGroup.append("svg:g")
-		.attr("class", "points")
-		.selectAll(".icon")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d) {return x(new Date(d.datetime))-15;})
-		.attr("y", function(d) {return y(d.temperature)+15;})
-		.attr("class", "icon")
-		.text(function(d) {return d.sky;});
 }
