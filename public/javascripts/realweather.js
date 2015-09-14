@@ -14,6 +14,8 @@
 			$(".temp_out").val(this.value);
 		})
 
+		showDate();
+
 	});
 
 	function sucessToGetPos(position) {
@@ -37,6 +39,13 @@
 
 	function errorToGetPos(msg) {
 		console.log(msg);
+	}
+
+	function showDate() {
+		var date = new Date();
+		$(".weather_box .time").text(date.toLocaleString());
+
+		setTimeout(showDate, 1000);
 	}
 
 

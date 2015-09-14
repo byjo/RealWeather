@@ -1,4 +1,4 @@
-var url = "ws://localhost:8080";
+var url = "ws://125.209.194.165:8080";
 var connection = new WebSocket(url);
 
 connection.onopen = function() {
