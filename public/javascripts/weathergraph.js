@@ -44,6 +44,8 @@ var RWEATHERgraph = {
 		// x축(시간)의 범위 연장 
 		this.x.domain(d3.extent(this.data, this.dateFn));
 
+		this.svg.selectAll("g.xaxis").remove();
+
 		// x축 재설정
 		this.xAxis = d3.svg.axis()
 			.scale(this.x)
@@ -54,7 +56,8 @@ var RWEATHERgraph = {
 
 		// x축 다시그리기 
 		this.svg.append("svg:g")
-			.attr("class", "axis")
+			//.attr("class", "axis")
+			.attr("class", "xaxis")
 			.attr("transform", "translate(0," + (this.height - this.margin.bottom) + ")")
 			.call(this.xAxis);
 
@@ -67,7 +70,8 @@ var RWEATHERgraph = {
 				.tickSubdivide(true);
 
 			this.svg.append("svg:g")
-				.attr("class", "axis")
+				//.attr("class", "axis")
+				.attr("class", "yaxis")
 				.attr("transform", "translate(" + (this.margin.left) + ",0)")
 				.call(this.yAxis);
 		}
@@ -100,12 +104,18 @@ var RWEATHERgraph = {
 			.attr("class", "icon")
 			.text(function(d) { return d.sky; });
 
+		this.svg.selectAll("path.lines").remove();
 
 		// line 그리기 
 		this.svg.append("svg:path")
 			// 얘가 왜 this bind안해도 되는지 잘 모르겠네 
 			.attr("d", this.lineFunc(this.data))
 			.attr("class", "lines");
+
+		// 임시방편 
+		d3.select(".around").attr("visibility", "hidden");
+		d3.select("text.icon").attr("visibility", "hidden");
+
 	}
 
 }
