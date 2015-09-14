@@ -7,11 +7,11 @@ html, body{overflow: auto;}
 
 @font-face {
     font-family: 'MeteoconsRegular';
-    src: url('icon/meteocons-webfont.eot');
-    src: url('icon/meteocons-webfont.eot?#iefix') format('embedded-opentype'),
-         url('icon/meteocons-webfont.woff') format('woff'),
-         url('icon/meteocons-webfont.ttf') format('truetype'),
-         url('icon/meteocons-webfont.svg#MeteoconsRegular') format('svg');
+    src: url('../icons/meteocons-webfont.eot');
+    src: url('../icons/meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../icons/meteocons-webfont.woff') format('woff'),
+         url('../icons/meteocons-webfont.ttf') format('truetype'),
+         url('../icons/meteocons-webfont.svg#MeteoconsRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -39,7 +39,7 @@ nav {
 
 main {
 	1height: calc(100% - 200px);
-	background-image: url("./image/bg_sky_a07.jpg");
+	background-image: url("../images/bg_sky_a07.jpg");
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -125,13 +125,6 @@ input[type=range]::-webkit-slider-thumb {
     background: goldenrod;
     margin-top: -4px;
 }
-
-
-
-
-/*input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #ccc;
-}*/
 
 
 footer {

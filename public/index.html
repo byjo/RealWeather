@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>RealWeather</title>
-		<link rel="stylesheet" href="./asset/style.css">
-		<link rel="stylesheet" href="./asset/graphstyle.css">
+		<link rel="stylesheet" href="./stylesheets/style.css">
+		<link rel="stylesheet" href="./stylesheets/graphstyle.css">
 	</head>
 	<body>
 		<header>
@@ -25,7 +25,7 @@
 			<div id="wrap_main">
 				<section class="weather_box">
 					<div class="location">
-						경기 성남시 분당구 삼평동
+						사용자 위치를 불러오는 중
 					</div>
 					<div class="time">
 						2015.09.05 오후 04:33:10
@@ -37,13 +37,49 @@
 						<div class="info time">5분전</div>
 					</div>
 
-					<svg class="weather_graph">
-						
-					</svg>
+					<svg class="weather_graph"></svg>
 				</section>
 
 				<form class="form">
-					
+					<div class="sky">
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="B">
+						</label>					
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="H">
+						</label>					
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="N">
+						</label>					
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="Q">
+						</label>					
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="R">
+						</label>					
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="U">
+						</label>
+						<label>
+							<input type="checkbox" />
+							<span class="icon" data-icon="W">
+						</label>
+					</div>
+					<div class="temperature">
+						<input class="temp_slider" type="range" min="-10" max="40" value="20"/>
+						<input class="temp_out" />
+					</div>
+					<input class="comments" />
+					<div>
+						
+					</div>
+					<input type="submit" class="submit" value="날씨 알리기">
 				</form>
 			</div>
 		</main>
@@ -52,6 +88,10 @@
 			<p>©2015 RealWeather</p>
 		</footer>
 
-		<script type="text/javascript" src="asset/realweather.js"></script>
+		<script type="text/javascript" src="javascripts/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="javascripts/d3.js"></script>
+		<script type="text/javascript" src="javascripts/websocket.js"></script>
+		<script type="text/javascript" src="javascripts/realweather.js"></script>
+		<script type="text/javascript" src="javascripts/graph.js"></script>
 	</body>
 </html>
