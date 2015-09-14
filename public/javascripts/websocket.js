@@ -8,7 +8,7 @@ connection.onopen = function() {
 
 connection.onmessage = function(e) {
 	var jsonData = JSON.parse(e.data);
-	jsonData.temperature = parseInt(jsonData.temper래ature);
+	jsonData.temperature = parseInt(jsonData.temperature);
 	jsonData.id = parseInt(jsonData.id);
 	updateWeather(jsonData);
 }
