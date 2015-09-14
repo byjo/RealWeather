@@ -1,9 +1,9 @@
 var data = [
-	{datetime: "2015-09-13T03:32:02.075Z", temperature: 29, sky: "B"}, 
-	{datetime: "2015-09-13T04:32:02.075Z", temperature: 31, sky: "C"}, 
-	{datetime: "2015-09-13T05:32:02.075Z", temperature: 30, sky: "D"}, 
-	{datetime: "2015-09-13T06:32:02.075Z", temperature: 28, sky: "E"}, 
-	{datetime: "2015-09-13T07:32:02.075Z", temperature: 26, sky: "F"}
+	{datetime: "2015-09-13T22:32:02.075Z", temperature: 29, sky: "B"}, 
+	{datetime: "2015-09-13T23:32:02.075Z", temperature: 31, sky: "C"}, 
+	{datetime: "2015-09-14T00:32:02.075Z", temperature: 30, sky: "D"}, 
+	{datetime: "2015-09-14T01:32:02.075Z", temperature: 28, sky: "E"}, 
+	{datetime: "2015-09-14T02:32:02.075Z", temperature: 26, sky: "F"}
 ];
 
 var width = 600;
@@ -86,7 +86,7 @@ dotGroup.append("svg:g")
 	.attr("class", "icon")
 	.text(function(d) { return d.sky; });
 
-function updateWeather(newWeather) {
+function updateWeatherGraph(newWeather) {
 	data.push(newWeather);
 	refreshGraph();
 }

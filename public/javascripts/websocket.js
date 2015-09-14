@@ -10,7 +10,9 @@ connection.onmessage = function(e) {
 	var jsonData = JSON.parse(e.data);
 	jsonData.temperature = parseInt(jsonData.temperature);
 	jsonData.id = parseInt(jsonData.id);
-	updateWeather(jsonData);
+
+	updateWeatherGraph(jsonData);
+	updateWeatherBox(jsonData);
 }
 
 connection.onclose = function(e) {
@@ -33,7 +35,6 @@ function resetForm() {
 function sendData() {
 	var sky = $(".form .sky .selected").attr("data-icon");
 	var weather = {
-		id : 6,
 		datetime : new Date().toISOString(),
 		sky : sky,
 		temperature : $(".form .temp_slider").val(),
@@ -41,5 +42,26 @@ function sendData() {
 	}
 	// websocket은 String, ArrayBuffer, Blob만 전송할 수 있다!
 	connection.send(JSON.stringify(weather));
+}
+
+function updateWeatherBox(newWeather) {
+	var datetime = new Date(newWeather.datetime);
+	var offset = (Date.now() - datetime.getTime())/1000;
+	var suffix;
+
+	$(".weather_detail .sky").attr("data-icon", newWeather.sky);
+	$(".weather_detail .temperature").html(newWeather.temperature + "℃");
+	$(".weather_detail .datetime").html(datetime.toLocaleString());
+
+	if (offset < 60) {
+		suffix = "초 전";
+	} else if (offset < 3600) {
+		suffix = "분 전";
+		offset /= 60;
+	} else {
+		suffix ="시간 전"
+		offset /= 60;
+	}
+	$(".weather_detail .timeOffset").html(offset + suffix);
 }
 
