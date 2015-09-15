@@ -98,7 +98,8 @@ var RWEATHERgraph = {
 			.attr("class", "around")
 			.text(function(d) {return d.sky;});
 
-		texts.enter().append("text")
+		texts.enter()
+			.append("text")
 			.attr("x", function(d) { return this.x(this.dateFn(d))-15; }.bind(this))
 			.attr("y", function(d) { return this.y(this.tempFn(d))+15; }.bind(this))
 			.attr("class", "icon")
