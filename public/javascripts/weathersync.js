@@ -23,8 +23,27 @@ var RWEATHERsync = {
 		}
 	},
 
+	loadImageData : function(e) {
+		var file = e.target.files[0];
+		// var file = e.target.files[0];
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			//this.weather.photo = reader.result;
+
+			// var img = new Image();
+			// img.src = reader.result;
+
+			// $("#fileDisplayArea").append(img);
+		}.bind(this);
+
+		//reader.readAsDataURL(file);
+		reader.readAsText(file);
+	},
+
 	sendWeather : function() {
 		var sky = $(".form .sky .selected").attr("data-icon");
+
+
 		this.weather.datetime = new Date().toISOString();
 		this.weather.sky = sky;
 		this.weather.temperature = $(".form .temp_slider").val();
@@ -56,6 +75,7 @@ var RWEATHERsync = {
 		$.get(url, this.weather).done(function(response) {
 			// mongodb에서 온 data는 json 이구나?
 			callback(response);
+			RWEATHER.updateWeatherBox(response.pop());
 		});
 	}
 }
