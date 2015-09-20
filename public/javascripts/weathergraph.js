@@ -24,8 +24,6 @@ var RWEATHERgraph = {
 		this.tempFn = function(d) {
 			return d.temperature;
 		}
-
-		this.initData();
 	},
 
 	initData : function() {
@@ -33,10 +31,14 @@ var RWEATHERgraph = {
 	},
 
 	updateWeatherGraph : function(newWeather) {
+		if (newWeather.length === 0)
+			return;
+
 		if (!this.data)
 			this.data = newWeather;
 		else
 			this.data.push(newWeather);
+
 		this.drawGraph();
 	},
 

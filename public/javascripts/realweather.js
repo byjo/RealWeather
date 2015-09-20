@@ -43,6 +43,7 @@ var RWEATHER = {
 	success : function(position) {
 		RWEATHERsync.getGeoAddress(position, function(response) {
 			$(".location").text(response.results[2].formatted_address);
+			RWEATHERgraph.initData();
 		});
 	},
 

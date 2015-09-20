@@ -9,8 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var weather = require('./routes/weather');
 var websocket = require('./routes/websocket_server');
-
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
