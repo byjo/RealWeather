@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 		var query = {'city':req.query.city, 'country':req.query.country, 'village':req.query.village};
 
 		// limit()
-		db.collection('weather').find(query).limit(10).toArray(function(err, data) {
+		db.collection('weather').find(query).toArray(function(err, data) {
 			if(err) res.status(500).send('db error');
 
 			res.send(data);

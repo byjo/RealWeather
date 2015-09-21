@@ -23,22 +23,22 @@ var RWEATHERsync = {
 		}
 	},
 
-	loadImageData : function(e) {
-		var file = e.target.files[0];
-		// var file = e.target.files[0];
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			//this.weather.photo = reader.result;
+	// loadImageData : function(e) {
+	// 	var file = e.target.files[0];
+	// 	// var file = e.target.files[0];
+	// 	var reader = new FileReader();
+	// 	reader.onload = function(e) {
+	// 		this.weather.photo = reader.result;
 
-			// var img = new Image();
-			// img.src = reader.result;
+	// 		// var img = new Image();
+	// 		// img.src = reader.result;
 
-			// $("#fileDisplayArea").append(img);
-		}.bind(this);
+	// 		// $("#fileDisplayArea").append(img);
+	// 	}.bind(this);
 
-		//reader.readAsDataURL(file);
-		reader.readAsText(file);
-	},
+	// 	reader.readAsDataURL(file);
+	// 	//reader.readAsBinaryString(file);
+	// },
 
 	sendWeather : function() {
 		var sky = $(".form .sky .selected").attr("data-icon");
@@ -49,6 +49,7 @@ var RWEATHERsync = {
 		this.weather.temperature = $(".form .temp_slider").val();
 		this.weather.comment = $(".form .comments").val();
 
+		//this.connection.send(this.weather);
 		this.connection.send(JSON.stringify(this.weather));
 	},
 
