@@ -1,6 +1,5 @@
 var RWEATHERsync = {
 	weather : {},
-
 	init : function() {
 		//var url = "ws://125.209.194.165:8080";
 		var url = "ws://localhost:8080";
@@ -23,33 +22,33 @@ var RWEATHERsync = {
 		}
 	},
 
-	// loadImageData : function(e) {
-	// 	var file = e.target.files[0];
-	// 	// var file = e.target.files[0];
-	// 	var reader = new FileReader();
-	// 	reader.onload = function(e) {
-	// 		this.weather.photo = reader.result;
+	loadImageData : function(e) {
+		var file = e.target.files[0];
+		var reader = new FileReader();
 
-	// 		// var img = new Image();
-	// 		// img.src = reader.result;
-
-	// 		// $("#fileDisplayArea").append(img);
-	// 	}.bind(this);
-
-	// 	reader.readAsDataURL(file);
-	// 	//reader.readAsBinaryString(file);
-	// },
+		this.photo = file;
+	},
 
 	sendWeather : function() {
 		var sky = $(".form .sky .selected").attr("data-icon");
-
 
 		this.weather.datetime = new Date().toISOString();
 		this.weather.sky = sky;
 		this.weather.temperature = $(".form .temp_slider").val();
 		this.weather.comment = $(".form .comments").val();
+		this.weather.photo = {};
+		this.weather.photo.url = Date.now() + "." + this.photo.type.split("/")[1];
 
-		//this.connection.send(this.weather);
+		this.photo.rename = this.weather.photo.url;
+
+		var formData = new FormData();
+		formData.append("fileName", this.weather.photo.url);
+		formData.append("photo", this.photo);
+
+		var xhr = new XMLHttpRequest;
+		xhr.open('POST', 'http://localhost:3000/weather', true);
+		xhr.send(formData);
+
 		this.connection.send(JSON.stringify(this.weather));
 	},
 

@@ -60,11 +60,13 @@ var RWEATHER = {
 		var datetime = new Date(newWeather.datetime);
 		var offset = (Date.now() - datetime.getTime())/1000;
 		var suffix;
+		var savePath = './photo/';
 
 		$(".weather_detail .sky").attr("data-icon", newWeather.sky);
 		$(".weather_detail .temperature").html(newWeather.temperature + "℃");
 		$(".weather_detail .datetime").html(datetime.toLocaleString());
 		$(".weather_detail .comment").html(newWeather.comment);
+		$("main").css("background-image", "url(" + savePath + newWeather.photo.url + ")"); 
 
 		if (offset < 60) {
 			suffix = "초 전";

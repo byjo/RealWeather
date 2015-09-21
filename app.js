@@ -12,14 +12,28 @@ var websocket = require('./routes/websocket_server');
 var app = express();
 
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({
+        extended: false,
+     parameterLimit: 10000,
+     limit: 1024 * 1024 * 10
+}));
+app.use(bodyParser.json({
+        extended: false,
+     parameterLimit: 10000,
+     limit: 1024 * 1024 * 10
+}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
