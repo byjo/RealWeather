@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://125.209.194.165:27017/realweather';
+var url = 'mongodb://localhost:27017/realweather';
 var formidable = require('formidable');
 var fs = require('fs');
 
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 		var query = {'city':req.query.city, 'country':req.query.country, 'village':req.query.village};
 
 		// limit()
-		db.collection('weather').find(query).toArray(function(err, data) {
+		db.collection('weather').find(query).sort({datetime : -1}).limit(10).toArray(function(err, data) {
 			if(err) res.status(500).send('db error');
 
 			res.send(data);

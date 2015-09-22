@@ -1,8 +1,8 @@
 var RWEATHERsync = {
 	weather : {},
 	init : function() {
-		//var url = "ws://125.209.194.165:8080";
-		var url = "ws://localhost:8080";
+		var url = "ws://125.209.194.165:8080";
+		//var url = "ws://localhost:8080";
 		this.connection = new WebSocket(url);
 
 		this.connection.onopen = function() {
@@ -70,10 +70,11 @@ var RWEATHERsync = {
 	},
 
 	getWeatherData : function(callback) {
-		//var url = "http://125.209.194.165:3000/weather";
-		var url = "http://localhost:3000/weather";
+		var url = "http://125.209.194.165:3000/weather";
+		//var url = "http://localhost:3000/weather";
 		$.get(url, this.weather).done(function(response) {
 			// mongodb에서 온 data는 json 이구나?
+			response.reverse();
 			callback(response);
 			RWEATHER.updateWeatherBox(response.pop());
 		});

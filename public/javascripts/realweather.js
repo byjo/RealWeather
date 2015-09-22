@@ -66,7 +66,8 @@ var RWEATHER = {
 		$(".weather_detail .temperature").html(newWeather.temperature + "℃");
 		$(".weather_detail .datetime").html(datetime.toLocaleString());
 		$(".weather_detail .comment").html(newWeather.comment);
-		$("main").css("background-image", "url(" + savePath + newWeather.photo.url + ")"); 
+		if (newWeather.photo.url)
+			$("main").css("background-image", "url(" + savePath + newWeather.photo.url + ")"); 
 
 		if (offset < 60) {
 			suffix = "초 전";
